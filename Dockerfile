@@ -1,5 +1,6 @@
+# based on work by  Eugene Ware <eugene@noblesamurai.com>
 FROM ubuntu:14.04
-MAINTAINER Eugene Ware <eugene@noblesamurai.com>
+MAINTAINER Dominik Fretz <dominik@openrov.com>
 
 # Keep upstart from complaining
 RUN dpkg-divert --local --rename --add /sbin/initctl
@@ -13,7 +14,7 @@ RUN apt-get -y upgrade
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server mysql-client apache2 libapache2-mod-php5 php5-mysql php-apc python-setuptools curl git unzip vim-tiny
 
 # Wordpress Requirements
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install php5-curl php5-gd php5-intl php-pear php5-imagick php5-imap php5-mcrypt php5-memcache php5-ming php5-ps php5-pspell php5-recode php5-sqlite php5-tidy php5-xmlrpc php5-xsl
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install php5-curl php5-gd php5-intl php-pear php5-imagick php5-imap php5-mcrypt php5-memcache php5-ming php5-ps php5-pspell php5-recode php5-sqlite php5-tidy php5-xmlrpc php5-xsl redis-server redis-tools libphp-predis php5-redis
 
 # mysql config
 ADD my.cnf /etc/mysql/conf.d/my.cnf
